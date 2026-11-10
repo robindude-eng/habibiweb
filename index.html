@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>হাবিব মিঞা | সেরা বোকা মানবের মহাজগৎ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Bengali Typography & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@300;400;600;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Font Application */
+        body {
+            font-family: 'Hind Siliguri', 'Anek Bangla', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Nodular Background Effect (Pure CSS Mesh) */
+        .nodular-bg {
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 85% 75%, rgba(236, 72, 153, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 35%);
+        }
+
+        /* Grid Node Overlay */
+        .node-grid {
+            background-size: 40px 40px;
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Nodular Frame with Glowing Nodes */
+        .nodular-frame {
+            position: relative;
+            padding: 12px;
+            border-radius: 1.5rem;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px dashed rgba(99, 102, 241, 0.4);
+        }
+
+        .node-dot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #6366f1;
+            box-shadow: 0 0 12px #6366f1, 0 0 20px #818cf8;
+            z-index: 20;
+        }
+
+        .node-tl { top: -7px; left: -7px; }
+        .node-tr { top: -7px; right: -7px; }
+        .node-bl { bottom: -7px; left: -7px; }
+        .node-br { bottom: -7px; right: -7px; }
+        .node-tc { top: -7px; left: 50%; transform: translateX(-50%); background: #ec4899; box-shadow: 0 0 12px #ec4899; }
+        .node-bc { bottom: -7px; left: 50%; transform: translateX(-50%); background: #10b981; box-shadow: 0 0 12px #10b981; }
+
+        /* Pure CSS Accordion / Toggle logic without JS */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .accordion-toggle:checked ~ .accordion-content {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .accordion-toggle:checked ~ label .icon-rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+    </style>
+</head>
+<body class="nodular-bg min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- Ambient Grid Overlay -->
+    <div class="fixed inset-0 node-grid pointer-events-none z-0"></div>
+
+    <div class="relative z-10">
+        <!-- Navigation Header -->
+        <header class="w-full border-b border-gray-800/80 glass-card sticky top-0 z-50">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <span class="text-3xl">🤪</span>
+                    <h1 class="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-pink-400 to-amber-400">
+                        হাবা হাবিবের ডায়েরি
+                    </h1>
+                </div>
+                <nav class="hidden md:flex space-x-6 space-x-reverse font-semibold text-sm text-gray-300">
+                    <a href="#about" class="hover:text-indigo-400 transition-colors">পরিচয়</a>
+                    <a href="#history" class="hover:text-indigo-400 transition-colors">হাবাগিরির ইতিহাস</a>
+                    <a href="#logic" class="hover:text-indigo-400 transition-colors">মহাজাগতিক যুক্তি</a>
+                    <a href="#quotes" class="hover:text-indigo-400 transition-colors">বানী chirantani</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="max-w-6xl mx-auto px-4 py-10 space-y-16">
+
+            <!-- Hero Section: Nodular Image Frame & Profile -->
+            <section id="about" class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                
+                <!-- Pure CSS Nodular Image Container -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="nodular-frame w-full max-w-sm">
+                        <!-- Connecting Nodes -->
+                        <div class="node-dot node-tl"></div>
+                        <div class="node-dot node-tr"></div>
+                        <div class="node-dot node-bl"></div>
+                        <div class="node-dot node-br"></div>
+                        <div class="node-dot node-tc"></div>
+                        <div class="node-dot node-bc"></div>
+
+                        <!-- Main Image Tag (halo.jpg) with Fallback UI -->
+                        <div class="relative rounded-xl overflow-hidden group border border-gray-700 bg-gray-900">
+                            <img src="halo.jpg" 
+                                 alt="হাবা হাবিবের ছবি" 
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-80 bg-gradient-to-br from-indigo-900 via-purple-900 to-gray-900 flex flex-col items-center justify-center p-6 text-center\'><i class=\'fa-solid fa-face-grin-tears text-6xl text-amber-400 mb-4 animate-bounce\'></i><p class=\'text-lg font-bold text-gray-200\'>halo.jpg লোড হয়নি!</p><p class=\'text-xs text-gray-400 mt-2\'>তবে হাবিবের হাবার মার্কা হাসি বজায় আছে।</p></div>';" 
+                                 class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                            
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-transparent p-4 text-center">
+                                <span class="bg-indigo-500/20 text-indigo-300 text-xs px-2.5 py-1 rounded-full border border-indigo-500/30">
+                                    <i class="fa-solid fa-microchip mr-1"></i> নোডলার মডেল v0.01 (অচল)
+                                </span>
+                                <h2 class="text-xl font-bold text-white mt-1">হাবিব মিঞা (হাবা প্রফেশনাল)</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intro Card -->
+                <div class="md:col-span-7 glass-card p-8 rounded-2xl relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-pink-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                    
+                    <span class="text-pink-400 font-bold uppercase tracking-wider text-xs bg-pink-500/10 px-3 py-1 rounded-full border border-pink-500/20">
+                        জ্ঞানশূণ্য কিন্তু দিলখোলা
+                    </span>
+                    
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-4 mb-4 leading-tight">
+                        "আমি হাবা হতে পারি, কিন্তু আমার বোকামি ১০০% খাঁটি!"
+                    </h2>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        স্বাগতম আমার নোডলার নেটওয়ার্কে। লোকে বলে আমার মাথায় বুদ্ধির শর্ট সার্কিট আছে। পরীক্ষা খাতায় রোল নম্বর ছাড়া আর কিছু লিখতে পারি না, কিন্তু জীবনে খুশির অভাব নেই! চলো জেনে নাও কীভাবে বুদ্ধি ছাড়াই সুখে থাকা যায়।
+                    </p>
+
+                    <!-- Pure CSS Badge List -->
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-gray-800 text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-700">
+                            🧠 আইকিউ: -২৫ (ঋণাত্মক)
+                        </span>
+                        <span class="bg-gray-800 text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-700">
+                            🍌 প্রিয় খাদ্য: খোসাসহ কলা
+                        </span>
+                        <span class="bg-gray-800 text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-gray-700">
+                            🏆 সুপারপাওয়ার: যেকোনো সহজ কাজ জটিল করা
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grid Stats / Features -->
+            <section id="history" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-l-indigo-500 hover:border-indigo-400 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">ফ্যান বন্ধের মহামতি</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        গরমের দিনে এসি চালিয়ে তার সামনে ফ্যান চালিয়ে দেন যেন এসি ঠান্ডা বাতাস পেয়ে আরাম পায়!
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-l-pink-500 hover:border-pink-400 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">পানি গরমের ফিলোসফি</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        ঠান্ডা পানি গরম করতে গিয়ে কেটলিতে আগুন জ্বালিয়ে ভাবেন— "পানি আবার পুড়ে ছাই না হয়ে যায়!"
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-l-emerald-500 hover:border-emerald-400 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">স্মার্টফোন স্পেশালিস্ট</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        মোবাইলের ফ্ল্যাশলাইট দিয়ে পুরো ঘর অন্ধকার খুঁজে বেড়ান, কারণ মোবাইলটা হারিয়ে গেছে!
+                    </p>
+                </div>
+            </section>
+
+            <!-- Pure CSS Interactive Accordion (No JS) -->
+            <section id="logic" class="glass-card p-8 rounded-2xl space-y-4">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-white">হাবিবের নোডলার লজিক সেশন (ক্লিক করে দেখুন)</h2>
+                    <p class="text-gray-400 text-sm">কোনো জাভাস্ক্রিপ্ট ছাড়াই একদম পিওর সিএসএস অ্যাকর্ডিয়ন!</p>
+                </div>
+
+                <!-- Item 1 -->
+                <div class="border border-gray-800 rounded-xl overflow-hidden">
+                    <input type="checkbox" id="accordion-1" class="hidden accordion-toggle">
+                    <label for="accordion-1" class="flex justify-between items-center p-4 bg-gray-900/50 cursor-pointer select-none hover:bg-gray-800/50 transition-colors">
+                        <span class="font-semibold text-gray-200">প্রশ্ন ১: ডিম আগে এলো নাকি মুরগি?</span>
+                        <i class="fa-solid fa-chevron-down text-indigo-400 icon-rotate transition-transform duration-300"></i>
+                    </label>
+                    <div class="accordion-content bg-gray-950/40 px-4">
+                        <p class="py-4 text-gray-300 text-sm border-t border-gray-800">
+                            হাবিবের উত্তর: "আগে পরোটা এলো! সকালে ডিম-মুরগি যাই থাকুক, পরোটা না থাকলে খাওয়া জমে না।"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="border border-gray-800 rounded-xl overflow-hidden">
+                    <input type="checkbox" id="accordion-2" class="hidden accordion-toggle">
+                    <label for="accordion-2" class="flex justify-between items-center p-4 bg-gray-900/50 cursor-pointer select-none hover:bg-gray-800/50 transition-colors">
+                        <span class="font-semibold text-gray-200">প্রশ্ন ২: সূর্য রাতে কোথায় যায়?</span>
+                        <i class="fa-solid fa-chevron-down text-indigo-400 icon-rotate transition-transform duration-300"></i>
+                    </label>
+                    <div class="accordion-content bg-gray-950/40 px-4">
+                        <p class="py-4 text-gray-300 text-sm border-t border-gray-800">
+                            হাবিবের উত্তর: "দিনভর ডিউটি দিয়ে ক্লান্ত হয়ে সূর্য মামা রাতে চার্জ নিতে নিচে নেমে যায়।"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="border border-gray-800 rounded-xl overflow-hidden">
+                    <input type="checkbox" id="accordion-3" class="hidden accordion-toggle">
+                    <label for="accordion-3" class="flex justify-between items-center p-4 bg-gray-900/50 cursor-pointer select-none hover:bg-gray-800/50 transition-colors">
+                        <span class="font-semibold text-gray-200">প্রশ্ন ৩: পরীক্ষার খাতায় শূন্য পেলে কী করতে হয়?</span>
+                        <i class="fa-solid fa-chevron-down text-indigo-400 icon-rotate transition-transform duration-300"></i>
+                    </label>
+                    <div class="accordion-content bg-gray-950/40 px-4">
+                        <p class="py-4 text-gray-300 text-sm border-t border-gray-800">
+                            হাবিবের উত্তর: "শূন্যের পাশে একটা ১ বসিয়ে ১০০ বানিয়ে আব্বাকে দেখিয়ে দেওয়াই বুদ্ধিমানের কাজ!"
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quotes Carousel / Grid -->
+            <section id="quotes">
+                <h2 class="text-2xl font-bold text-white mb-6 text-center">মহাজাগতিক মহা-বাণী সমূহ</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <blockquote class="glass-card p-6 rounded-2xl relative italic text-gray-300 border-r-4 border-r-purple-500">
+                        "যাদের মাথায় বুদ্ধি বেশি, তাদের চুল তাড়াতাড়ি পড়ে যায়। দেখছ না আমার মাথার চুল কত ঘন?"
+                        <span class="block not-italic text-xs text-indigo-400 font-semibold mt-3 text-left">— হাবিব দা ফિલોসোফার</span>
+                    </blockquote>
+                    <blockquote class="glass-card p-6 rounded-2xl relative italic text-gray-300 border-r-4 border-r-amber-500">
+                        "পড়াশোনা করে যে, গাড়ি ঘোড়া চড়ে সে। কিন্তু আমি হেঁটে চলতেই বেশি ভালোবাসি, স্বাস্থ্যের জন্য ভালো!"
+                        <span class="block not-italic text-xs text-amber-400 font-semibold mt-3 text-left">— হাবিব দা হেলথ কনশাস</span>
+                    </blockquote>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="w-full border-t border-gray-800 glass-card mt-16 py-8">
+            <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-gray-400 text-sm gap-4">
+                <p>© ২০২৬ হাবা হাবিব নেটওয়ার্ক। কোনো স্বত্ব সংরক্ষিত নেই, কারণ আমরা কিছুই বুঝি না!</p>
+                <div class="flex space-x-4 space-x-reverse text-lg">
+                    <a href="#" class="hover:text-indigo-400 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-indigo-400 transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-indigo-400 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
